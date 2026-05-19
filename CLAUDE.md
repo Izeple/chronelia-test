@@ -11,11 +11,13 @@ index.html          — main page
 CLAUDE.md           — this file
 .gitignore          — excludes _archive/
 assets/
-  ├── bg-mobile.mp4     — mobile background video (9:16 portrait)
-  ├── bg-pc.mp4         — PC background video (landscape)
-  ├── avatar.png        — profile avatar
-  └── donate-icon.gif   — EasyDonate button icon
-_archive/               — gitignored, unused Linktree JS/CSS + original saved HTML
+  ├── bg-mobile.mp4       — mobile background video (9:16 portrait)
+  ├── bg-pc.mp4           — PC background video (landscape)
+  ├── avatar.png          — profile avatar
+  ├── donate-icon.gif     — shared button icon (both link buttons)
+  ├── cursor.png          — default cursor (48x48)
+  └── cursor_click.png    — hover/click cursor (32x32)
+_archive/                 — gitignored, unused Linktree JS/CSS + original saved HTML
 ```
 
 ## Background Video Behavior
@@ -31,11 +33,17 @@ _archive/               — gitignored, unused Linktree JS/CSS + original saved 
 - Buttons: frosted glass (`rgba(255,255,255,0.15)`), `border-radius: 28px`
 - Font: Inter (Google Fonts)
 
-## Links
+## Cursors
+
+- Default: `cursor.png` (48×48) on `html, body`
+- Interactive: `cursor_click.png` (32×32) on `a, button, [role="link"], [role="button"], input, label, select`
+
+## Link Buttons
 
 | Label | URL |
 |---|---|
-| Support Chronelia now | https://easydonate.app/chronelia |
+| Pray Chronelia now | https://easydonate.app/chronelia |
+| Wallpaper free | https://drive.google.com/drive/folders/1T66fc6LVt3-MW6-_pm0aypj8bbtQfs76 |
 
 ## Social Icons
 
@@ -44,10 +52,9 @@ YouTube, Instagram (`CHRONELIA_CH`), TikTok (`@chronelia00`), Discord (`BUeCUhu9
 ## Deploy
 
 ```
-git init
 git add .
-git commit -m "init"
-git remote add origin <repo-url>
-git push -u origin main
+git commit -m "message"
+git push
 ```
-GitHub → Settings → Pages → Deploy from branch: `main` / `root`
+Repo: `https://github.com/Izeple/chronelia-test.git`
+Site: `https://izeple.github.io/chronelia-test/`
