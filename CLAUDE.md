@@ -1,13 +1,17 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # Chronelia Linktree Clone
 
 Static linktree-style profile page for **Chronelia**. Hosted on GitHub Pages.
 
 ## Structure
 
-No build step, no dependencies.
+No build step, no dependencies. Everything in one `index.html` with inline CSS and SVG icons.
 
 ```
-index.html          — main page
+index.html          — main page (all CSS + SVG inline)
 CLAUDE.md           — this file
 .gitignore          — excludes _archive/
 assets/
@@ -22,8 +26,9 @@ _archive/                 — gitignored, unused Linktree JS/CSS + original save
 
 ## Background Video Behavior
 
-- **Mobile (≤768px):** 2-layer — blur fill (Layer 1) + portrait clear centered (Layer 2, 9:16)
-- **PC (≥769px):** `bg-pc.mp4` full cover single layer
+- **Mobile (≤768px):** 2-layer — blur fill (Layer 1, `z-index:0`) + portrait clear centered (Layer 2, `z-index:1`, 9:16). Blur video uses `transform: scale(1.15)` to hide blur edges.
+- **PC (≥769px):** `bg-pc.mp4` full cover single layer (`z-index:0`). Mobile layers hidden via `display:none`.
+- Content `.page` sits at `z-index:2` above all video layers.
 
 ## Layout
 
@@ -32,6 +37,19 @@ _archive/                 — gitignored, unused Linktree JS/CSS + original save
 - Background color fallback: `#7979be`
 - Buttons: frosted glass (`rgba(255,255,255,0.15)`), `border-radius: 28px`
 - Font: Inter (Google Fonts)
+
+## CSS Custom Properties
+
+Defined on `:root`:
+
+| Variable | Value | Use |
+|---|---|---|
+| `--bg` | `#7979be` | Fallback background |
+| `--btn-bg` | `rgba(255,255,255,0.15)` | Button fill |
+| `--btn-border` | `rgba(255,255,255,0.25)` | Button border |
+| `--btn-text` | `#ffffff` | Button text |
+| `--radius` | `28px` | Button border-radius |
+| `--gap` | `14px` | Links gap + container padding |
 
 ## Cursors
 
@@ -45,9 +63,19 @@ _archive/                 — gitignored, unused Linktree JS/CSS + original save
 | Pray Chronelia now | https://easydonate.app/chronelia |
 | Wallpaper free | https://drive.google.com/drive/folders/1T66fc6LVt3-MW6-_pm0aypj8bbtQfs76 |
 
+Both buttons share `donate-icon.gif` as the left icon (48×48, positioned absolute within `.link-icon`).
+
 ## Social Icons
 
-YouTube, Instagram (`CHRONELIA_CH`), TikTok (`@chronelia00`), Discord (`BUeCUhu9`), Facebook (`61575378848836`)
+All SVG icons are inline (no external icon library). Platforms and handles:
+
+| Platform | Handle/ID |
+|---|---|
+| YouTube | `@Chronelia` |
+| Instagram | `CHRONELIA_CH` |
+| TikTok | `@chronelia00` |
+| Discord | invite `BUeCUhu9` |
+| Facebook | profile ID `61575378848836` |
 
 ## Deploy
 
